@@ -10,10 +10,10 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 
 @TeleOp(name = "DriveTrain")
 public class DriveTrain extends LinearOpMode {
-    public DcMotor leftFront;
-    public DcMotor leftBack;
-    public DcMotor rightFront;
-    public DcMotor rightBack;
+    public DcMotor leftFront = Hardware.leftFront;
+    public DcMotor leftBack = Hardware.leftBack;
+    public DcMotor rightFront = Hardware.rightFront;
+    public DcMotor rightBack = Hardware.rightBack;
 
 
     double powLeftFront;
@@ -25,10 +25,6 @@ public class DriveTrain extends LinearOpMode {
     public void runOpMode() {
         BetterTelemetry.init(telemetry);
         Hardware.init(hardwareMap);
-        leftFront = hardwareMap.get(DcMotor.class, "DrivetranLeftFront");
-        leftBack = hardwareMap.get(DcMotor.class, "DrivetranLeftBack");
-        rightFront = hardwareMap.get(DcMotor.class, "DrivetranRightFront");
-        rightBack = hardwareMap.get(DcMotor.class, "DrivetranRightBack");
         waitForStart();
         while (opModeIsActive()) {
             driveTheTrain();

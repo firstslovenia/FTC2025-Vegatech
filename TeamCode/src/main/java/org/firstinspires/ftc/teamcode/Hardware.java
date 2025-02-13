@@ -4,6 +4,7 @@ package org.firstinspires.ftc.teamcode;
 //import static org.firstinspires.ftc.teamcode.drive.DriveConstants.USB_FACING_DIR;
 
 import com.qualcomm.robotcore.hardware.CRServo;
+import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import lombok.Getter;
@@ -17,6 +18,14 @@ public class Hardware {
     static CRServo desnoZgoraj;
     @Getter
     static CRServo desnoSpodaj;
+    @Getter
+    static DcMotor leftFront;
+    @Getter
+    static DcMotor leftBack;
+    @Getter
+    static DcMotor rightFront;
+    @Getter
+    static DcMotor rightBack;
 
     public static void init(HardwareMap hardwareMap) {
         // Drive Motors
@@ -25,5 +34,9 @@ public class Hardware {
         desnoZgoraj = hardwareMap.get(CRServo.class, "desnoZgoraj");
         desnoSpodaj = hardwareMap.get(CRServo.class, "desnoSpodaj");
 
+        leftFront = hardwareMap.get(DcMotor.class, "DrivetranLeftFront");
+        leftBack = hardwareMap.get(DcMotor.class, "DrivetranLeftBack");
+        rightFront = hardwareMap.get(DcMotor.class, "DrivetranRightFront");
+        rightBack = hardwareMap.get(DcMotor.class, "DrivetranRightBack");
     }
 }
