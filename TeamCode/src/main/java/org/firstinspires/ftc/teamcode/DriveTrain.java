@@ -6,7 +6,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 
-@TeleOp(name = "DriveTrain")
+//@TeleOp(name = "DriveTrain")
 public class DriveTrain {
     public static DcMotor leftFront = Hardware.leftFront;
     public static DcMotor leftBack = Hardware.leftBack;
@@ -29,6 +29,10 @@ public class DriveTrain {
         float leftY = InputMapper.leftY;
         float leftX = InputMapper.leftX;
         float rightX = InputMapper.rightX;
+
+        BetterTelemetry.print("leftY", leftY);
+        BetterTelemetry.print("leftX", leftX);
+        BetterTelemetry.print("rightX", rightX);
 
         powLeftFront = leftY - leftX - rightX;
         powLeftBack = leftY + leftX - rightX;

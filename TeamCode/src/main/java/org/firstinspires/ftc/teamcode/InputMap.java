@@ -14,7 +14,12 @@ public abstract class InputMap {
     abstract public float readLeftX();
     abstract public float readLeftY();
     abstract public float readRightX();
-    abstract public boolean readImuReset();
+//    abstract public boolean readImuReset();
 
     abstract public float readRightY();
+
+    abstract public float readLeftTrigger();
+
+    abstract public float readRightTrigger();
+    abstract public boolean readLeftBumper();
 }

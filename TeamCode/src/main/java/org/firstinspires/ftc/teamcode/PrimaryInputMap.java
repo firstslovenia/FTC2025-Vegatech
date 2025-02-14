@@ -22,13 +22,27 @@ public class PrimaryInputMap extends InputMap {
         return gamepad1.right_stick_x;
     }
 
-    @Override
-    public boolean readImuReset() {
-        return gamepad1.options;
-    }
+//    @Override
+//    public boolean readImuReset() {
+//        return gamepad1.options;
+//    }
 
     @Override
     public float readRightY() {
-        return gamepad2.right_stick_y;
+        return gamepad1.right_stick_y;
+    }
+
+    public float readLeftTrigger() {
+        return gamepad1.left_trigger;
+    }
+
+    @Override
+    public float readRightTrigger() {
+        return gamepad1.right_trigger;
+    }
+
+    @Override
+    public boolean readLeftBumper() {
+        return gamepad1.left_bumper;
     }
 }

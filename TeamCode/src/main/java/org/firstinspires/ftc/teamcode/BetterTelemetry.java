@@ -10,11 +10,13 @@ public class BetterTelemetry {
 
     static void print(String name, double data) {
         telemetry.addData(name, data);
-        telemetry.update();
     }
 
     static void print(String name, boolean data) {
         telemetry.addData(name, data);
-        telemetry.update();
     }
+
+//    static void update() {
+//        telemetry.update();
+//    }
 }

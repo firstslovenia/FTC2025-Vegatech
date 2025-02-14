@@ -3,7 +3,6 @@ package org.firstinspires.ftc.teamcode;
 //import static org.firstinspires.ftc.teamcode.drive.DriveConstants.LOGO_FACING_DIR;
 //import static org.firstinspires.ftc.teamcode.drive.DriveConstants.USB_FACING_DIR;
 
-import com.qualcomm.hardware.motors.RevRoboticsCoreHexMotor;
 import com.qualcomm.hardware.motors.RevRoboticsUltraPlanetaryHdHexMotor;
 import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.DcMotor;
@@ -29,28 +28,29 @@ public class Hardware {
     @Getter
     static DcMotor rightBack;
     @Getter
-    static RevRoboticsCoreHexMotor rokaLeft;
+    static DcMotor rokaLeft;
     @Getter
-    static RevRoboticsCoreHexMotor rokaRight;
+    static DcMotor rokaRight;
     @Getter
-    static RevRoboticsUltraPlanetaryHdHexMotor lifterLeft;
+    static DcMotor lifterLeft;
     @Getter
-    static RevRoboticsUltraPlanetaryHdHexMotor lifterRight;
+    static DcMotor lifterRight;
 
     public static void init(HardwareMap hardwareMap) {
         // Drive Motors
-        levoZgoraj = hardwareMap.get(CRServo.class, "levoZgoraj");
-        levoSpodaj = hardwareMap.get(CRServo.class, "levoSpodaj");
-        desnoZgoraj = hardwareMap.get(CRServo.class, "desnoZgoraj");
-        desnoSpodaj = hardwareMap.get(CRServo.class, "desnoSpodaj");
+//        levoZgoraj = hardwareMap.get(CRServo.class, "levoZgoraj");
+//        levoSpodaj = hardwareMap.get(CRServo.class, "levoSpodaj");
+//        desnoZgoraj = hardwareMap.get(CRServo.class, "desnoZgoraj");
+//        desnoSpodaj = hardwareMap.get(CRServo.class, "desnoSpodaj");
 
-        leftFront = hardwareMap.get(DcMotor.class, "DrivetranLeftFront");
-        leftBack = hardwareMap.get(DcMotor.class, "DrivetranLeftBack");
-        rightFront = hardwareMap.get(DcMotor.class, "DrivetranRightFront");
-        rightBack = hardwareMap.get(DcMotor.class, "DrivetranRightBack");
-        rokaLeft = hardwareMap.get(RevRoboticsCoreHexMotor.class, "rokaLeft");
-        rokaRight = hardwareMap.get(RevRoboticsCoreHexMotor.class, "rokaRight");
-        lifterLeft = hardwareMap.get(RevRoboticsUltraPlanetaryHdHexMotor.class, "lifterLeft");
-        lifterRight = hardwareMap.get(RevRoboticsUltraPlanetaryHdHexMotor.class, "lifterRight");
+        leftFront = hardwareMap.get(DcMotor.class, "drivetranLeftFront");
+        leftBack = hardwareMap.get(DcMotor.class, "drivetranLeftBack");
+        rightFront = hardwareMap.get(DcMotor.class, "drivetranRightFront");
+        rightBack = hardwareMap.get(DcMotor.class, "drivetranRightBack");
+        rokaLeft = hardwareMap.get(DcMotor.class, "lifterTilt-Left");
+        rokaRight = hardwareMap.get(DcMotor.class, "lifterTilt-Right");
+        lifterLeft = hardwareMap.get(DcMotor.class, "lifterUpDown-Left");
+        lifterRight = hardwareMap.get(DcMotor.class, "lifterUpDown-Right");
+
     }
 }
