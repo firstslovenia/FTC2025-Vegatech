@@ -24,6 +24,8 @@ public class InputMapper {
     static float rightTrigger;
     @Getter
     static boolean leftBumperPressed;
+    @Getter
+    static boolean rightBumperPressed;
 
     public static void init(InputMap inputMapToSet) {
         inputMap = inputMapToSet;
@@ -40,5 +42,6 @@ public class InputMapper {
         leftTrigger = inputMap.readLeftTrigger();
         rightTrigger = inputMap.readRightTrigger();
         leftBumperPressed = inputMap.readLeftBumper();
+        rightBumperPressed = inputMap.readRightBumper();
     }
 }

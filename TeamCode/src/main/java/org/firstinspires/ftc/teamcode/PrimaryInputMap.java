@@ -45,4 +45,9 @@ public class PrimaryInputMap extends InputMap {
     public boolean readLeftBumper() {
         return gamepad1.left_bumper;
     }
+
+    @Override
+    public boolean readRightBumper() {
+        return gamepad1.right_bumper;
+    }
 }

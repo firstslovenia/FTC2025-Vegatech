@@ -5,6 +5,7 @@ public class Lifter {
     private static double wantedLocation;
     private static final int maxPosition = 250;
     private static double zero = 0;
+    private static boolean pressed = false;
 
     public static void lift() {
 //        float powerToSet = InputMapper.leftTrigger - InputMapper.rightTrigger;
@@ -17,10 +18,18 @@ public class Lifter {
         if (InputMapper.leftBumperPressed) {
             zero += currentLocation;
             wantedLocation = 0;
+        } else if (InputMapper.rightBumperPressed && !pressed) {
+            zero -= 10;
+            wantedLocation += 10;
+            pressed = true;
         } else {
             wantedLocation += (InputMapper.leftTrigger - InputMapper.rightTrigger);
             wantedLocation = Math.max(0, Math.min(maxPosition, wantedLocation));
             powerToSet = Math.pow((wantedLocation - currentLocation) / 10, 3);
+        }
+
+        if (!InputMapper.rightBumperPressed) {
+            pressed = false;
         }
         //        double powerToSet = ;
         BetterTelemetry.print("wantedLocation", wantedLocation);
@@ -28,7 +37,5 @@ public class Lifter {
 //        float powerToSet =
         Hardware.rokaLeft.setPower(powerToSet);
         Hardware.rokaRight.setPower(-powerToSet);
-
-
     }
 }
