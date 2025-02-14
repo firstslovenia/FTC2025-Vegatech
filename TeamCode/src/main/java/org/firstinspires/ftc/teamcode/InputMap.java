@@ -23,4 +23,6 @@ public abstract class InputMap {
     abstract public float readRightTrigger();
     abstract public boolean readLeftBumper();
     abstract public boolean readRightBumper();
+    abstract public boolean readCross();
+    abstract public boolean readTriangle();
 }

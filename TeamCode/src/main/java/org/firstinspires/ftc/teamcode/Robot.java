@@ -1,11 +1,10 @@
 package org.firstinspires.ftc.teamcode;
 
-import static org.firstinspires.ftc.teamcode.Differencial.differencialThing;
 import static org.firstinspires.ftc.teamcode.DriveTrain.driveTheTrain;
 import static org.firstinspires.ftc.teamcode.Lifter.lift;
+import static org.firstinspires.ftc.teamcode.Lifter.rokaTilt;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 @TeleOp(name = "Robot", group = "Robot")
@@ -19,6 +18,7 @@ public class Robot extends LinearOpMode {
         while (opModeIsActive()) {
             InputMapper.update();
             driveTheTrain();
+            rokaTilt();
             lift();
             telemetry.update();
 //           differencialThing();

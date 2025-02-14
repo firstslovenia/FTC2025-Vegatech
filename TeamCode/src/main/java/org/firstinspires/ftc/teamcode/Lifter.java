@@ -7,7 +7,7 @@ public class Lifter {
     private static double zero = 0;
     private static boolean pressed = false;
 
-    public static void lift() {
+    public static void rokaTilt() {
 //        float powerToSet = InputMapper.leftTrigger - InputMapper.rightTrigger;
         double currentLocation = -((-Hardware.rokaLeft.getCurrentPosition() + Hardware.rokaRight.getCurrentPosition()) * 0.625) - zero;
         BetterTelemetry.print("rokaLeft", Hardware.rokaLeft.getCurrentPosition());
@@ -38,4 +38,15 @@ public class Lifter {
         Hardware.rokaLeft.setPower(powerToSet);
         Hardware.rokaRight.setPower(-powerToSet);
     }
+
+    private static int boolToInt(boolean b) {
+        return b ? 1 : 0;
+    }
+
+    public static void lift() {
+        float powerToSet = boolToInt(InputMapper.crossPressed) - boolToInt(InputMapper.trianglePressed);
+        Hardware.lifterLeft.setPower(powerToSet);
+        Hardware.lifterRight.setPower(powerToSet);
+    }
+
 }
