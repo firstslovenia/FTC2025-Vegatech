@@ -13,13 +13,6 @@ public class DriveTrain {
     public static DcMotor rightFront = Hardware.rightFront;
     public static DcMotor rightBack = Hardware.rightBack;
 
-
-    static double powLeftFront;
-    static double powLeftBack;
-    static double powRightFront;
-    static double powRightBack;
-
-
 //    @Override
 //    public void loop() {
 //        driveTheTrain();
@@ -34,11 +27,19 @@ public class DriveTrain {
         BetterTelemetry.print("leftX", leftX);
         BetterTelemetry.print("rightX", rightX);
 
-        powLeftFront = leftY - leftX - rightX;
-        powLeftBack = leftY + leftX - rightX;
-        powRightFront = leftY + leftX + rightX;
-        powRightBack = leftY - leftX + rightX;
+        double powLeftFront = leftY - leftX - rightX;
+        double powLeftBack = leftY + leftX - rightX;
+        double powRightFront = leftY + leftX + rightX;
+        double powRightBack = leftY - leftX + rightX;
 
+        double powMax = Math.max(Math.max(Math.abs(powLeftFront), Math.abs(powLeftBack)), Math.max(Math.abs(powRightFront), Math.abs(powRightBack)));
+
+        if (powMax > 1) {
+            powLeftFront /= powMax;
+            powLeftBack /= powMax;
+            powRightFront /= powMax;
+            powRightBack /= powMax;
+        }
         leftFront.setPower(0 - powLeftFront);
         leftBack.setPower(0 - powLeftBack);
         rightFront.setPower(powRightFront);
