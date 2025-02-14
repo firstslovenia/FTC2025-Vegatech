@@ -6,27 +6,30 @@ public class InputMapper {
     private static InputMap inputMap;
 
     @Getter
-    static double driveX;
+    static float leftX;
     @Getter
-    static double driveY;
+    static float leftY;
     @Getter
     private static double driveRot;
     @Getter
     private static boolean imuReset;
 
     @Getter
-    private static double lifterY;
+    static float rightX;
+    @Getter
+    private static float rightY;
 
     public static void init(InputMap inputMapToSet) {
         inputMap = inputMapToSet;
     }
 
     public static void update() {
-        driveX = inputMap.readDriveX();
-        driveY = inputMap.readDriveY();
-        driveRot = inputMap.readDriveRot();
+        leftX = inputMap.readLeftX();
+        leftY = inputMap.readLeftY();
+        driveRot = inputMap.readRightX();
         imuReset = inputMap.readImuReset();
 
-        lifterY = inputMap.readLifterY();
+        rightX = inputMap.readRightX();
+        rightY = inputMap.readRightY();
     }
 }

@@ -8,17 +8,17 @@ public class PrimaryInputMap extends InputMap {
     }
 
     @Override
-    public double readDriveX() {
+    public float readLeftX() {
         return gamepad1.left_stick_x;
     }
 
     @Override
-    public double readDriveY() {
+    public float readLeftY() {
         return gamepad1.left_stick_y;
     }
 
     @Override
-    public double readDriveRot() {
+    public float readRightX() {
         return gamepad1.right_stick_x;
     }
 
@@ -28,7 +28,7 @@ public class PrimaryInputMap extends InputMap {
     }
 
     @Override
-    public double readLifterY() {
+    public float readRightY() {
         return gamepad2.right_stick_y;
     }
 }

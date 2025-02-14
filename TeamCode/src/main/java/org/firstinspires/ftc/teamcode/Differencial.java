@@ -1,8 +1,6 @@
 package org.firstinspires.ftc.teamcode;
 
-import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.hardware.CRServo;
-import com.qualcomm.robotcore.hardware.Gamepad;
 
 public class Differencial {
 
@@ -15,8 +13,8 @@ public class Differencial {
 
     public static void differencialThing() {
         float maxPowerDifferencial;
-        powerLevaStran = (float) (InputMapper.driveY - InputMapper.driveX);
-        powerDesnaStran = (float) (-InputMapper.driveY - InputMapper.driveX);
+        powerLevaStran = InputMapper.leftY - InputMapper.leftX;
+        powerDesnaStran = -InputMapper.leftY - InputMapper.leftX;
         maxPowerDifferencial = Math.max(powerLevaStran, powerDesnaStran);
         if (Math.abs(maxPowerDifferencial) > 1) {
             powerLevaStran /= maxPowerDifferencial;

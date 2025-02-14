@@ -3,45 +3,37 @@ package org.firstinspires.ftc.teamcode;
 import static org.firstinspires.ftc.teamcode.Differencial.differencialThing;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
-import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.DcMotor;
 
 @TeleOp(name = "DriveTrain")
-public class DriveTrain extends LinearOpMode {
-    public DcMotor leftFront = Hardware.leftFront;
-    public DcMotor leftBack = Hardware.leftBack;
-    public DcMotor rightFront = Hardware.rightFront;
-    public DcMotor rightBack = Hardware.rightBack;
+public class DriveTrain {
+    public static DcMotor leftFront = Hardware.leftFront;
+    public static DcMotor leftBack = Hardware.leftBack;
+    public static DcMotor rightFront = Hardware.rightFront;
+    public static DcMotor rightBack = Hardware.rightBack;
 
 
-    double powLeftFront;
-    double powLeftBack;
-    double powRightFront;
-    double powRightBack;
+    static double powLeftFront;
+    static double powLeftBack;
+    static double powRightFront;
+    static double powRightBack;
 
-    @Override
-    public void runOpMode() {
-        BetterTelemetry.init(telemetry);
-        Hardware.init(hardwareMap);
-        waitForStart();
-        while (opModeIsActive()) {
-            driveTheTrain();
-            differencialThing();
-        }
-    }
 
 //    @Override
 //    public void loop() {
 //        driveTheTrain();
 //    }
 
-    private void driveTheTrain() {
-        powLeftFront = gamepad1.left_stick_y - gamepad1.left_stick_x - gamepad1.right_stick_x;
-        powLeftBack = gamepad1.left_stick_y + gamepad1.left_stick_x - gamepad1.right_stick_x;
-        powRightFront = gamepad1.left_stick_y + gamepad1.left_stick_x + gamepad1.right_stick_x;
-        powRightBack = gamepad1.left_stick_y - gamepad1.left_stick_x + gamepad1.right_stick_x;
+    static void driveTheTrain() {
+        float leftY = InputMapper.leftY;
+        float leftX = InputMapper.leftX;
+        float rightX = InputMapper.rightX;
+
+        powLeftFront = leftY - leftX - rightX;
+        powLeftBack = leftY + leftX - rightX;
+        powRightFront = leftY + leftX + rightX;
+        powRightBack = leftY - leftX + rightX;
 
         leftFront.setPower(0 - powLeftFront);
         leftBack.setPower(0 - powLeftBack);

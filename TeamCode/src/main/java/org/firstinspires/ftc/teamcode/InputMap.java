@@ -11,10 +11,10 @@ public abstract class InputMap {
         this.gamepad2 = gamepad2;
     }
 
-    abstract public double readDriveX();
-    abstract public double readDriveY();
-    abstract public double readDriveRot();
+    abstract public float readLeftX();
+    abstract public float readLeftY();
+    abstract public float readRightX();
     abstract public boolean readImuReset();
 
-    abstract public double readLifterY();
+    abstract public float readRightY();
 }
