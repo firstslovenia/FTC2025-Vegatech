@@ -15,8 +15,8 @@ public class Robot extends LinearOpMode {
         BetterTelemetry.init(telemetry);
         Hardware.init(hardwareMap);
         InputMapper.init(new PrimaryInputMap(gamepad1, gamepad2));
-        Hardware.lifterLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        Hardware.lifterRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        //Hardware.lifterLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        //Hardware.lifterRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         waitForStart();
 
         while (opModeIsActive()) {

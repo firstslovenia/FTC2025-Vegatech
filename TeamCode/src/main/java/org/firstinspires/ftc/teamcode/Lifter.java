@@ -8,8 +8,8 @@ public class Lifter {
     private static final int rokaMaxPosition = 250;
     private static double rokaZero = 0;
     private static boolean rokaPressed = false;
-    private static double liftMaxPosition = 3000;
-    private static double liftMinPosition = 0;
+    private static double liftMaxPosition = 3200;
+    //private static double liftMinPosition = 0;
     private static double lifterWantedLocation;
 
 
@@ -52,9 +52,9 @@ public class Lifter {
     public static void lift() {
         double currentLocation = (double) (Hardware.lifterLeft.getCurrentPosition() + Hardware.lifterRight.getCurrentPosition()) / 2;
         BetterTelemetry.print("curentLocationBefore", currentLocation);
-        currentLocation = Math.max(liftMinPosition, Math.min(currentLocation, liftMaxPosition));
-        lifterWantedLocation = Math.max(liftMinPosition, Math.min((lifterWantedLocation + (-boolToInt(InputMapper.crossPressed) + boolToInt(InputMapper.trianglePressed)) * 3), liftMaxPosition));
-        double powerToSet = Math.pow((lifterWantedLocation - currentLocation) / 10, 3);
+        lifterWantedLocation += (-boolToInt(InputMapper.crossPressed) + boolToInt(InputMapper.trianglePressed)) * 20;
+        lifterWantedLocation = Math.max(0, Math.min(lifterWantedLocation, liftMaxPosition));
+        //double powerToSet = Math.pow((lifterWantedLocation - currentLocation) / 10, 3);
         ; // Math.pow((wantedLocation - currentLocation) / 20, 3);
 
 
@@ -76,9 +76,9 @@ public class Lifter {
         BetterTelemetry.print("lifterRight", Hardware.lifterRight.getCurrentPosition());
         BetterTelemetry.print("currentLocation", currentLocation);
         BetterTelemetry.print("wantedlocation", lifterWantedLocation);
-        BetterTelemetry.print("powerTOset", powerToSet);
-        Hardware.lifterLeft.setPower(0.1);
-        Hardware.lifterRight.setPower(0.1);
+        //BetterTelemetry.print("powerTOset", powerToSet);
+        Hardware.lifterLeft.setPower(1);
+        Hardware.lifterRight.setPower(1);
         //Hardware.lifterLeft.setPower(powerToSet);
         //Hardware.lifterRight.setPower(powerToSet);
 
@@ -86,12 +86,14 @@ public class Lifter {
 //        Hardware.lifterRight.setTargetPosition(20);
 
 
-        if (InputMapper.dpadUp) {
-            liftMaxPosition = currentLocation;
-        }
+        //if (InputMapper.dpadUp) {
+        //    liftMaxPosition = currentLocation;
+        //}
 
         if (InputMapper.dpadDown) {
-            liftMinPosition = currentLocation;
+            Hardware.lifterLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+            Hardware.lifterRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+            lifterWantedLocation = 0;
         }
     }
 }
