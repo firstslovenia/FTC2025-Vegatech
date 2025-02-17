@@ -25,4 +25,6 @@ public abstract class InputMap {
     abstract public boolean readRightBumper();
     abstract public boolean readCross();
     abstract public boolean readTriangle();
+    abstract public boolean readDpadUp();
+    abstract public boolean readDpadDown();
 }

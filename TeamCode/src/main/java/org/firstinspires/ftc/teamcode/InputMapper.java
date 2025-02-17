@@ -30,6 +30,14 @@ public class InputMapper {
     static boolean crossPressed;
     @Getter
     static boolean trianglePressed;
+    @Getter
+    static boolean dpadUp;
+    @Getter
+    static boolean dpadDown;
+//    @Getter
+//    static boolean dpadLeft;
+//    @Getter
+//    static boolean dpadRight;
 
     public static void init(InputMap inputMapToSet) {
         inputMap = inputMapToSet;
@@ -49,5 +57,7 @@ public class InputMapper {
         rightBumperPressed = inputMap.readRightBumper();
         crossPressed = inputMap.readCross();
         trianglePressed = inputMap.readTriangle();
+        dpadUp = inputMap.readDpadUp();
+        dpadDown = inputMap.readDpadDown();
     }
 }

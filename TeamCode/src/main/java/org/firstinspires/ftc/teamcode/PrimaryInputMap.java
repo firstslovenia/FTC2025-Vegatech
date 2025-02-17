@@ -60,4 +60,14 @@ public class PrimaryInputMap extends InputMap {
     public boolean readCross() {
         return gamepad1.cross;
     }
+
+    @Override
+    public boolean readDpadUp() {
+        return gamepad1.dpad_up;
+    }
+
+    @Override
+    public boolean readDpadDown() {
+        return gamepad1.dpad_down;
+    }
 }
