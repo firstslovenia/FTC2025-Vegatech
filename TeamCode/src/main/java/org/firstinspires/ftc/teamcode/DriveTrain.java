@@ -23,6 +23,21 @@ public class DriveTrain {
         float leftX = InputMapper.leftX;
         float rightX = InputMapper.rightX;
 
+        if (InputMapper.domenLeftBooleanBumper) {
+            if (leftX == 0 && InputMapper.domenDpadLeft) {
+                leftX = 0.5F;
+            }
+            if (leftX == 0 && InputMapper.domenDpadRight) {
+                leftX = -0.5F;
+            }
+            if (leftY == 0 && InputMapper.domenDpadUp) {
+                leftY = 0.5F;
+            }
+            if (leftY == 0 && InputMapper.domenDpadDown) {
+                leftY = -0.5F;
+            }
+        }
+
         BetterTelemetry.print("leftY", leftY);
         BetterTelemetry.print("leftX", leftX);
         BetterTelemetry.print("rightX", rightX);

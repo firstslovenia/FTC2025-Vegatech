@@ -27,4 +27,18 @@ public abstract class InputMap {
     abstract public boolean readTriangle();
     abstract public boolean readDpadUp();
     abstract public boolean readDpadDown();
+    abstract public boolean readDomenLeftBooleanBumper();
+    abstract public boolean readDomenRightBooleanBumper();
+    abstract public boolean readDomenDpadUp();
+    abstract public boolean readDomenDpadDown();
+    abstract public boolean readDomenDpadLeft();
+    abstract public boolean readDomenDpadRight();
+    abstract public float readDomenLeftX();
+    abstract public float readDomenLeftY();
+    abstract public float readDomenRightX();
+    abstract public float readDomenRightY();
+    abstract public boolean readDomenCross();
+    abstract public boolean readDomenTriangle();
+    abstract public boolean readDomenSquare();
+    abstract public boolean readDomenCircle();
 }

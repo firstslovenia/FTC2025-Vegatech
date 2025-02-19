@@ -4,8 +4,6 @@ import com.qualcomm.robotcore.hardware.CRServo;
 
 public class Differencial {
 
-    private static float powerDesnaStran;
-    private static float powerLevaStran;
     private static final CRServo levoZgoraj = Hardware.levoZgoraj;
     private static final CRServo levoSpodaj = Hardware.levoSpodaj;
     private static final CRServo desnoZgoraj = Hardware.desnoZgoraj;
@@ -13,8 +11,8 @@ public class Differencial {
 
     public static void differencialThing() {
         float maxPowerDifferencial;
-        powerLevaStran = InputMapper.leftY - InputMapper.leftX;
-        powerDesnaStran = -InputMapper.leftY - InputMapper.leftX;
+        float powerLevaStran = InputMapper.domenLeftY - InputMapper.domenLeftX;
+        float powerDesnaStran = -InputMapper.domenLeftY - InputMapper.domenLeftX;
         maxPowerDifferencial = Math.max(powerLevaStran, powerDesnaStran);
         if (Math.abs(maxPowerDifferencial) > 1) {
             powerLevaStran /= maxPowerDifferencial;

@@ -34,10 +34,35 @@ public class InputMapper {
     static boolean dpadUp;
     @Getter
     static boolean dpadDown;
-//    @Getter
-//    static boolean dpadLeft;
-//    @Getter
-//    static boolean dpadRight;
+    @Getter
+    static boolean domenLeftBooleanBumper;
+    @Getter
+    static boolean domenRightBooleanBumper;
+    @Getter
+    static boolean domenCircle;
+    @Getter
+    static boolean domenCross;
+    @Getter
+    static boolean domenSquare;
+    @Getter
+    static boolean domenTriangle;
+    @Getter
+    static boolean domenDpadUp;
+    @Getter
+    static boolean domenDpadDown;
+    @Getter
+    static boolean domenDpadLeft;
+    @Getter
+    static boolean domenDpadRight;
+    @Getter
+    static float domenLeftX;
+    @Getter
+    static float domenLeftY;
+    @Getter
+    static float domenRightX;
+    @Getter
+    static float domenRightY;
+
 
     public static void init(InputMap inputMapToSet) {
         inputMap = inputMapToSet;
@@ -59,5 +84,21 @@ public class InputMapper {
         trianglePressed = inputMap.readTriangle();
         dpadUp = inputMap.readDpadUp();
         dpadDown = inputMap.readDpadDown();
+
+        // domen
+        domenLeftBooleanBumper = inputMap.readDomenLeftBooleanBumper();
+        domenRightBooleanBumper = inputMap.readDomenRightBooleanBumper();
+        domenCircle = inputMap.readDomenCircle();
+        domenCross = inputMap.readDomenCross();
+        domenSquare = inputMap.readDomenSquare();
+        domenTriangle = inputMap.readDomenTriangle();
+        domenDpadUp = inputMap.readDomenDpadUp();
+        domenDpadDown = inputMap.readDomenDpadDown();
+        domenDpadLeft = inputMap.readDomenDpadLeft();
+        domenDpadRight = inputMap.readDomenDpadRight();
+        domenLeftX = inputMap.readDomenLeftX();
+        domenLeftY = inputMap.readDomenLeftY();
+        domenRightX = inputMap.readDomenRightX();
+        domenRightY = inputMap.readDomenRightY();
     }
 }

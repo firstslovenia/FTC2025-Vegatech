@@ -35,6 +35,8 @@ public class Hardware {
     static DcMotor lifterLeft;
     @Getter
     static DcMotor lifterRight;
+    @Getter
+    static CRServo claw;
 
     public static void init(HardwareMap hardwareMap) {
         // Drive Motors
@@ -51,6 +53,7 @@ public class Hardware {
         rokaRight = hardwareMap.get(DcMotor.class, "lifterTilt-Right");
         lifterLeft = hardwareMap.get(DcMotor.class, "lifterUpDown-Left");
         lifterRight = hardwareMap.get(DcMotor.class, "lifterUpDown-Right");
+        claw = hardwareMap.get(CRServo.class, "claw");
 
     }
 }

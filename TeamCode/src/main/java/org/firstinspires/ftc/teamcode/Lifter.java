@@ -6,43 +6,38 @@ public class Lifter {
 
     private static double rokaWantedLocation;
     private static final int rokaMaxPosition = 250;
-    private static double rokaZero = 0;
-    private static boolean rokaPressed = false;
-    private static double liftMaxPosition = 3200;
-    //private static double liftMinPosition = 0;
+//    private static boolean rokaPressed = false;
+    private static final double liftMaxPosition = 3200;
     private static double lifterWantedLocation;
 
 
     public static void rokaTilt() {
-//        float powerToSet = InputMapper.leftTrigger - InputMapper.rightTrigger;
-        double currentLocation = -((-Hardware.rokaLeft.getCurrentPosition() + Hardware.rokaRight.getCurrentPosition()) * 0.625) - rokaZero;
+//        double currentLocation = (double) (-Hardware.rokaLeft.getCurrentPosition() + Hardware.rokaRight.getCurrentPosition()) / 2;
         BetterTelemetry.print("rokaLeft", Hardware.rokaLeft.getCurrentPosition());
         BetterTelemetry.print("rokaRight", Hardware.rokaRight.getCurrentPosition());
-        BetterTelemetry.print("currentLocation", currentLocation);
-        double powerToSet = 0;
+//        BetterTelemetry.print("currentLocation", currentLocation);
 
-        if (InputMapper.leftBumperPressed) {
-            rokaZero += currentLocation;
+        if (InputMapper.crossPressed || (InputMapper.domenRightBooleanBumper && InputMapper.domenDpadUp)) {
+            Hardware.rokaLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+            Hardware.rokaRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
             rokaWantedLocation = 0;
-        } else if (InputMapper.rightBumperPressed && !rokaPressed) {
-            rokaZero -= 10;
-            rokaWantedLocation += 10;
-            rokaPressed = true;
         } else {
-            rokaWantedLocation += (InputMapper.leftTrigger - InputMapper.rightTrigger);
+            float wantedLocationDifference = (-boolToInt(InputMapper.leftBumperPressed) + boolToInt(InputMapper.rightBumperPressed)) * 20;
+            if (wantedLocationDifference == 0) {
+                wantedLocationDifference = InputMapper.domenLeftX;
+            }
+            rokaWantedLocation += wantedLocationDifference;
             rokaWantedLocation = Math.max(0, Math.min(rokaMaxPosition, rokaWantedLocation));
-            powerToSet = Math.pow((rokaWantedLocation - currentLocation) / 10, 3);
         }
-
-        if (!InputMapper.rightBumperPressed) {
-            rokaPressed = false;
-        }
-        //        double powerToSet = ;
         BetterTelemetry.print("rokaWantedLocation", rokaWantedLocation);
-        BetterTelemetry.print("powertoset", powerToSet);
-//        float powerToSet =
-        Hardware.rokaLeft.setPower(powerToSet);
-        Hardware.rokaRight.setPower(-powerToSet);
+        Hardware.rokaLeft.setTargetPosition((int) Math.round(lifterWantedLocation));
+        Hardware.rokaRight.setTargetPosition((int) Math.round(rokaWantedLocation));
+
+        Hardware.rokaLeft.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        Hardware.rokaRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+
+        Hardware.rokaLeft.setPower(1);
+        Hardware.rokaRight.setPower(-1);
     }
 
     private static int boolToInt(boolean b) {
@@ -50,13 +45,14 @@ public class Lifter {
     }
 
     public static void lift() {
-        double currentLocation = (double) (Hardware.lifterLeft.getCurrentPosition() + Hardware.lifterRight.getCurrentPosition()) / 2;
-        BetterTelemetry.print("curentLocationBefore", currentLocation);
-        lifterWantedLocation += (-boolToInt(InputMapper.crossPressed) + boolToInt(InputMapper.trianglePressed)) * 20;
+//        double currentLocation = (double) (Hardware.lifterLeft.getCurrentPosition() + Hardware.lifterRight.getCurrentPosition()) / 2;
+//        BetterTelemetry.print("curentLocationBefore", currentLocation);
+        float wantedLocationDifference = (-InputMapper.leftTrigger + InputMapper.rightTrigger);
+        if (wantedLocationDifference == 0) {
+            wantedLocationDifference = InputMapper.domenLeftY;
+        }
+        lifterWantedLocation += wantedLocationDifference;
         lifterWantedLocation = Math.max(0, Math.min(lifterWantedLocation, liftMaxPosition));
-        //double powerToSet = Math.pow((lifterWantedLocation - currentLocation) / 10, 3);
-        ; // Math.pow((wantedLocation - currentLocation) / 20, 3);
-
 
 
         Hardware.lifterLeft.setTargetPosition((int) Math.round(lifterWantedLocation));
@@ -68,29 +64,16 @@ public class Lifter {
         Hardware.lifterRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
 
-        //lifterWantedLocation += -boolToInt(InputMapper.crossPressed) + boolToInt(InputMapper.trianglePressed);
-        //lifterWantedLocation = Math.max(0, Math.min(lifterMaxPosition, lifterWantedLocation));
-
-        //double powerToSet = Math.pow((rokaWantedLocation - currentLocation) / 10, 3);
         BetterTelemetry.print("lifterLeft", Hardware.lifterLeft.getCurrentPosition());
         BetterTelemetry.print("lifterRight", Hardware.lifterRight.getCurrentPosition());
-        BetterTelemetry.print("currentLocation", currentLocation);
+//        BetterTelemetry.print("currentLocation", currentLocation);
         BetterTelemetry.print("wantedlocation", lifterWantedLocation);
-        //BetterTelemetry.print("powerTOset", powerToSet);
         Hardware.lifterLeft.setPower(1);
         Hardware.lifterRight.setPower(1);
-        //Hardware.lifterLeft.setPower(powerToSet);
-        //Hardware.lifterRight.setPower(powerToSet);
 
-//        Hardware.lifterLeft.setTargetPosition(20);
-//        Hardware.lifterRight.setTargetPosition(20);
+        // TODO premade positions
 
-
-        //if (InputMapper.dpadUp) {
-        //    liftMaxPosition = currentLocation;
-        //}
-
-        if (InputMapper.dpadDown) {
+        if (InputMapper.dpadDown || (InputMapper.domenRightBooleanBumper && InputMapper.domenDpadDown)) {
             Hardware.lifterLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
             Hardware.lifterRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
             lifterWantedLocation = 0;
