@@ -62,6 +62,10 @@ public class InputMapper {
     static float domenRightX;
     @Getter
     static float domenRightY;
+    @Getter
+    static float domenLeftFloat;
+    @Getter
+    static float domenRightFloat;
 
 
     public static void init(InputMap inputMapToSet) {
@@ -100,5 +104,7 @@ public class InputMapper {
         domenLeftY = inputMap.readDomenLeftY();
         domenRightX = inputMap.readDomenRightX();
         domenRightY = inputMap.readDomenRightY();
+        domenLeftFloat = inputMap.readDomenLeftFloat();
+        domenRightFloat = inputMap.readDomenRightFloat();
     }
 }

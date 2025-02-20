@@ -41,4 +41,6 @@ public abstract class InputMap {
     abstract public boolean readDomenTriangle();
     abstract public boolean readDomenSquare();
     abstract public boolean readDomenCircle();
+    abstract public float readDomenLeftFloat();
+    abstract public float readDomenRightFloat();
 }

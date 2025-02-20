@@ -1,10 +1,10 @@
 package org.firstinspires.ftc.teamcode;
 
-import static org.firstinspires.ftc.teamcode.Claw.clawThing;
-import static org.firstinspires.ftc.teamcode.Differencial.differencialThing;
+import static org.firstinspires.ftc.teamcode.Claw.handleClaw;
+import static org.firstinspires.ftc.teamcode.Differencial.handleDifferencial;
 import static org.firstinspires.ftc.teamcode.DriveTrain.driveTheTrain;
-import static org.firstinspires.ftc.teamcode.Lifter.lift;
-import static org.firstinspires.ftc.teamcode.Lifter.rokaTilt;
+import static org.firstinspires.ftc.teamcode.Lifter.liftTheLifter;
+import static org.firstinspires.ftc.teamcode.Lifter.tiltTheArm;
 
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
@@ -23,10 +23,14 @@ public class Robot extends OpMode {
     public void loop() {
         InputMapper.update();
         driveTheTrain();
-        rokaTilt();
-        lift();
-        differencialThing();
-        clawThing();
+        tiltTheArm();
+        liftTheLifter();
+        handleDifferencial();
+        handleClaw();
         telemetry.update();
+    }
+
+    static int boolToInt(boolean b) {
+        return b ? 1 : 0;
     }
 }

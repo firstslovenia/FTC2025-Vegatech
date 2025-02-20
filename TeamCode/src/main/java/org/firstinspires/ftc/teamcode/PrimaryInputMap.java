@@ -141,4 +141,13 @@ public class PrimaryInputMap extends InputMap {
         return gamepad2.right_bumper;
     }
 
+    @Override
+    public float readDomenLeftFloat() {
+        return gamepad2.left_trigger;
+    }
+
+    @Override
+    public float readDomenRightFloat() {
+        return gamepad2.right_trigger;
+    }
 }
