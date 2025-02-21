@@ -150,4 +150,14 @@ public class PrimaryInputMap extends InputMap {
     public float readDomenRightFloat() {
         return gamepad2.right_trigger;
     }
+
+    @Override
+    public boolean readDpadLeft() {
+        return gamepad1.dpad_left;
+    }
+
+    @Override
+    public boolean readDpadRight() {
+        return gamepad1.dpad_right;
+    }
 }

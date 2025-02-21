@@ -8,6 +8,7 @@ import static org.firstinspires.ftc.teamcode.Lifter.tiltTheArm;
 
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+import com.qualcomm.robotcore.hardware.DcMotor;
 
 @TeleOp(name = "Robot", group = "Robot")
 public class Robot extends OpMode {
@@ -17,6 +18,16 @@ public class Robot extends OpMode {
         BetterTelemetry.init(telemetry);
         Hardware.init(hardwareMap);
         InputMapper.init(new PrimaryInputMap(gamepad1, gamepad2));
+
+//        Hardware.rokaLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+//        Hardware.rokaRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+
+        // TODO reset encoders of drivetrain motors
+
+//        Hardware.leftFront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+//        Hardware.leftBack.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+//        Hardware.rightFront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+//        Hardware.rightBack.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
     }
 
     @Override

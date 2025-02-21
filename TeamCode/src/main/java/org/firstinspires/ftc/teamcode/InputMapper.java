@@ -35,6 +35,10 @@ public class InputMapper {
     @Getter
     static boolean dpadDown;
     @Getter
+    static boolean dpadLeft;
+    @Getter
+    static boolean dpadRight;
+    @Getter
     static boolean domenLeftBooleanBumper;
     @Getter
     static boolean domenRightBooleanBumper;
@@ -106,5 +110,7 @@ public class InputMapper {
         domenRightY = inputMap.readDomenRightY();
         domenLeftFloat = inputMap.readDomenLeftFloat();
         domenRightFloat = inputMap.readDomenRightFloat();
+        dpadLeft = inputMap.readDpadLeft();
+        dpadRight = inputMap.readDpadRight();
     }
 }

@@ -4,8 +4,8 @@ package org.firstinspires.ftc.teamcode;
 public class Differencial {
 
     public static void handleDifferencial() {
-        float powerLevaStran = InputMapper.domenLeftY - InputMapper.domenLeftX;
-        float powerDesnaStran = -InputMapper.domenLeftY - InputMapper.domenLeftX;
+        float powerLevaStran = InputMapper.domenRightY - InputMapper.domenRightX;
+        float powerDesnaStran = -InputMapper.domenRightY - InputMapper.domenRightX;
         float maxPowerDifferencial = Math.max(powerLevaStran, powerDesnaStran);
 
         if (Math.abs(maxPowerDifferencial) > 1) {
