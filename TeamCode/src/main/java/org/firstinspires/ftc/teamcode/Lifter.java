@@ -104,6 +104,80 @@ public class Lifter {
 
     }
 
+    public static void coolerTiltTheArm() {
+//        double currentLocation = -((-Hardware.rokaLeft.getCurrentPosition() + Hardware.rokaRight.getCurrentPosition()) * 0.625);
+//        BetterTelemetry.print("rokaLeft", Hardware.rokaLeft.getCurrentPosition());
+//        BetterTelemetry.print("rokaRight", Hardware.rokaRight.getCurrentPosition());
+//        BetterTelemetry.print("currentLocation", currentLocation);
+////        double powerToSet = 0;
+//
+////        if (InputMapper.leftBumperPressed) {
+//////            rokaZero += currentLocation; vt
+////            rokaWantedLocation = 0;
+////        } else if (InputMapper.rightBumperPressed && !rokaPressed) {
+//////            rokaZero -= 10;
+////            rokaWantedLocation += 10;
+////            rokaPressed = true;
+////        } else {
+//            rokaWantedLocation += InputMapper.leftX; // (InputMapper.leftTrigger - InputMapper.rightTrigger);
+//            rokaWantedLocation = Math.max(rokaMinPosition, Math.min(rokaMaxPosition, rokaWantedLocation));
+//            double powerToSet = Math.pow((rokaWantedLocation - currentLocation) / 10, 3);
+////        }
+//
+////        if (!InputMapper.rightBumperPressed) {
+////            rokaPressed = false;
+////        }
+//        //        double powerToSet = ;
+//        BetterTelemetry.print("rokaWantedLocation", rokaWantedLocation);
+//        BetterTelemetry.print("powertoset", powerToSet);
+////        float powerToSet =
+//        Hardware.rokaLeft.setPower(powerToSet);
+//        Hardware.rokaRight.setPower(-powerToSet);
+//        double currentLocation = (double) (-Hardware.rokaLeft.getCurrentPosition() + Hardware.rokaRight.getCurrentPosition()) / 2;
+        BetterTelemetry.print("rokaLeft", Hardware.rokaLeft.getCurrentPosition());
+        BetterTelemetry.print("rokaRight", Hardware.rokaRight.getCurrentPosition());
+        BetterTelemetry.print("wanted location before", rokaWantedLocation);
+//        BetterTelemetry.print("currentLocation", currentLocation);
+
+//        if (InputMapper.crossPressed || (InputMapper.domenRightBooleanBumper && InputMapper.domenDpadUp)) {
+//            Hardware.rokaLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+//            Hardware.rokaRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+//            rokaWantedLocation = 0;
+//        } else {
+
+
+        // RUN TO POSITION
+//        rokaWantedLocation += ((-boolToInt(InputMapper.leftBumperPressed) + boolToInt(InputMapper.rightBumperPressed)) * 20) + (-InputMapper.domenLeftX * 30); // + InputMapper.domenRightX;
+//        if (!InputMapper.domenRightBooleanBumper)
+//            rokaWantedLocation = Math.max(0, Math.min(rokaMaxPosition, rokaWantedLocation));
+//        BetterTelemetry.print("rokaWantedLocation", rokaWantedLocation);
+//        BetterTelemetry.print("domen left x negated", -InputMapper.domenLeftX);
+//        BetterTelemetry.print("left bumper pressed", boolToInt(InputMapper.leftBumperPressed));
+//        BetterTelemetry.print("right bumper pressed", boolToInt(InputMapper.rightBumperPressed));
+//        Hardware.rokaLeft.setTargetPosition(-((int) Math.round(rokaWantedLocation)));
+//        Hardware.rokaRight.setTargetPosition((int) Math.round(rokaWantedLocation));
+//
+//        Hardware.rokaLeft.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+//        Hardware.rokaRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+//
+//        Hardware.rokaLeft.setPower(-1);
+//        Hardware.rokaRight.setPower(1);
+
+        double position = (double) (-Hardware.rokaLeft.getCurrentPosition() + Hardware.rokaRight.getCurrentPosition()) / 2;
+
+        float powerToSet = -boolToInt(InputMapper.domenDpadDown && position > 0) + boolToInt(InputMapper.domenDpadUp); // - InputMapper.domenLeftX; // + InputMapper.domenRightX;
+
+//        powerToSet = Math.max(0, Math.min(powerToSet, rokaMaxPosition));
+
+        BetterTelemetry.print("power to set", powerToSet);
+
+        Hardware.rokaLeft.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+
+        Hardware.rokaLeft.setPower(-powerToSet);
+        Hardware.rokaRight.setPower(powerToSet);
+
+    }
+
     public static void liftTheLifter() {
 //        double currentLocation = (double) (Hardware.lifterLeft.getCurrentPosition() + Hardware.lifterRight.getCurrentPosition()) / 2;
 //        BetterTelemetry.print("curentLocationBefore", currentLocation);

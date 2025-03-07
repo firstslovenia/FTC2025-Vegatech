@@ -3,16 +3,16 @@ package org.firstinspires.ftc.teamcode;
 import static org.firstinspires.ftc.teamcode.Claw.handleClaw;
 import static org.firstinspires.ftc.teamcode.Differencial.handleDifferencial;
 import static org.firstinspires.ftc.teamcode.DriveTrain.driveTheTrain;
+import static org.firstinspires.ftc.teamcode.Lifter.coolerTiltTheArm;
 import static org.firstinspires.ftc.teamcode.Lifter.liftTheLifter;
 import static org.firstinspires.ftc.teamcode.Lifter.tiltTheArm;
 import static org.firstinspires.ftc.teamcode.Preset.preset;
 
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
-import com.qualcomm.robotcore.hardware.DcMotor;
 
-@TeleOp(name = "Robot", group = "Robot")
-public class Robot extends OpMode {
+@TeleOp(name = "CoolerRobot", group = "Robot")
+public class CoolerRobot extends OpMode {
 
     @Override
     public void init() {
@@ -35,7 +35,7 @@ public class Robot extends OpMode {
     public void loop() {
         InputMapper.update();
         driveTheTrain();
-        tiltTheArm();
+        coolerTiltTheArm();
         liftTheLifter();
         handleDifferencial();
         handleClaw();
